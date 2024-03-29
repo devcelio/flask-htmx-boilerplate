@@ -1,0 +1,28 @@
+<div class="overflow-auto min-w-0 h-[500px]" hx-target="this">
+    <table class="table min-w-[500px]">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Created At</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for obj in object_list %}
+                <tr class="hover:bg-base-200">
+                    <td>{{ obj.full_name }}</td>
+                    <td>{{ obj.created_at }}</td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td class="text-red-600">Não há resultados</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% if page > 1 %}
+        <a href="{{ url_for(request.endpoint, search=request.args.get('search'), page=page-1) }}">Prev</a>
+    {% endif %}
+    {% if page < pagination.get_pages() %}
+        <a href="{{ url_for(request.endpoint, search=request.args.get('search'), page=page+1) }}">Next</a>
+    {% endif %}
+</div>

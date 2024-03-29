@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/daisy-ui.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <script src="{{ url_for('static', filename='js/tailwind.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/htmx.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/htmx-alpine-morph.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/alpine.min.js') }}"></script>
+</head>
+<body hx-boost="true" hx-push-url="false" class="h-screen w-screen flex flex-col">
+    <header>
+        {% block header %}{% endblock %}
+    </header>
+    <div class="flex grow">
+        <aside>
+            {% block aside %}{% endblock %}
+        </aside>
+        <main class="grow">
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+</body>
+</html>

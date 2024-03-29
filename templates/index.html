@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    {% include "components/header.html" %}
+{% endblock %}
+
+{% block aside %}
+    {% include "components/aside.html" %}
+{% endblock %}
+
+{% block content %}
+    <div class="p-4">
+        <div class="text-end">
+            <button class="btn btn-sm">Novo Cliente</button>
+        </div>
+        <form  hx-get="{{ url_for('components.client_table') }}" hx-trigger="submit, load, keyup delay:500ms, search" hx-target="next .table-div">
+            <input name='search' class="input input-bordered input-sm" type="search">
+        </form>
+        <div class="relative">
+            <div class="table-div"></div>
+            <div class="absolute width-full h-full grid content-center pointer-events-none">
+                <span class="loading loading-spinner loading-lg htmx-indicator"></span>
+            </div>
+        </div>
+    </div>
+{% endblock %}
