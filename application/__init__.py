@@ -4,7 +4,7 @@ from .utils.registry import configure_modules
 from flask_peewee.admin import Admin
 from flask_peewee.auth import Auth
 
-app = Flask(__name__, template_folder='../templates', static_folder='../lib')
+app = Flask(__name__, template_folder='../templates', static_folder='../static')
 app.config
 app.config.from_object('application.settings')
 db = Database(app)
